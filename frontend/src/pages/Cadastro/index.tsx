@@ -8,6 +8,7 @@ import './post.css'
 import api from "../../serivces/api";
 import { useEffect, useState } from "react";
 
+
 export const Cadastro = () => {
 
   const [Estado, setUF] = useState<any[]>([]);
@@ -26,7 +27,7 @@ export const Cadastro = () => {
     date_nasc: yup.string().required("A data é obrigatória"),
     altura: yup.string().required("A altura é obrigatória").max(4, "Até 4 caracteres permitidos"),
     peso: yup.string().required("O peso é obrigatório").max(5, "Até 5 caractéres permitidos"),
-    UF: yup.string().required()
+    uf: yup.string().required()
   })
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -86,7 +87,7 @@ export const Cadastro = () => {
 
             <div className="fields">
               <label>UF</label>
-              <select {...register("UF")}>
+              <select {...register("uf")}>
               {Estado.map((item) => {
               return (
                 <option>{item.sigla}</option>
