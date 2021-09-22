@@ -5,15 +5,28 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup";
 import './post.css'
+import api from "../../serivces/api";
+import { useEffect, useState } from "react";
 
 export const Cadastro = () => {
+
+  const [Estado, setUF] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadUF() {
+       const response = await api.get('/api/v1/localidades/estados/')
+       setUF(response.data);
+     }
+    loadUF();
+   }, [])
 
   const validationPost = yup.object({
     nome: yup.string().required("O nome é obrigatório").max(40, "O nome precisa ter menos de 40 caracteres"),
     cpf: yup.string().required("O CPF é obrigatório").max(11, "11 digitos obrigatórios").min(11, "11 digitos obrigatórios"),
     date_nasc: yup.string().required("A data é obrigatória"),
     altura: yup.string().required("A altura é obrigatória").max(4, "Até 4 caracteres permitidos"),
-    peso: yup.string().required("O peso é obrigatório").max(5, "Até 5 caractéres permitidos")
+    peso: yup.string().required("O peso é obrigatório").max(5, "Até 5 caractéres permitidos"),
+    UF: yup.string().required()
   })
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -28,6 +41,7 @@ export const Cadastro = () => {
     console.log("Deu erro")
   })
 
+  console.log(Estado)
 
   return (
     <>
@@ -68,6 +82,18 @@ export const Cadastro = () => {
               <label>Peso</label>
               <input type='text' {...register("peso")}></input>
               <p className="error-message">{errors.peso?.message}</p>
+            </div>
+
+            <div className="fields">
+              <label>UF</label>
+              <select {...register("UF")}>
+              {Estado.map((item) => {
+              return (
+                <option>{item.sigla}</option>
+              );
+              })}
+              </select>
+            <p className="error-message">{errors.peso?.message}</p>
             </div>
 
             <div className="btn-post">

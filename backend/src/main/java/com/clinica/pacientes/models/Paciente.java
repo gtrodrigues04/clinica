@@ -44,4 +44,8 @@ public class Paciente {
     @Column 
     @NonNull
     Double Altura;
+
+    @Column 
+    @NonNull
+    String UF;
 }

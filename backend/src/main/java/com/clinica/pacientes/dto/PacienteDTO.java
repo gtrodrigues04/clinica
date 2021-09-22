@@ -19,6 +19,7 @@ public class PacienteDTO implements Serializable {
     private LocalDate Date_nasc;
     private Double Altura;
     private Double Peso;
+    private String UF;
 
     public PacienteDTO() {
 
@@ -31,5 +32,6 @@ public class PacienteDTO implements Serializable {
         Date_nasc = entity.getDate_nasc();
         Altura = entity.getAltura();
         Peso = entity.getAltura();
+        UF = entity.getUF();
     }
 }
