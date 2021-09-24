@@ -24,10 +24,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
-@Configuration
-@EnableWebMvc
 //@EnableAuthorizationServer
 //@EnableResourceServer
+@Configuration
+@EnableWebMvc
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -48,7 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}*/
-
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.clinica.pacientes.models.Medico;
 import com.clinica.pacientes.repository.MedicoRepository;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -77,5 +79,22 @@ public class MedicoController {
         medicoRepository.deleteById(medicoId);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/validarSenha") 
+    public ResponseEntity<Boolean> validarSenha(@RequestParam String cpf,
+                                                @RequestParam String senha) {
+        Optional<Medico> optCPF = medicoRepository.findByCPF(cpf);
+        if (optCPF.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+        }
+
+        boolean valid = false;
+        Medico medico = optCPF.get();
+        valid = encoder.matches(senha, medico.getSenha());
+
+        HttpStatus status = (valid) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
+        return ResponseEntity.status(status).body(valid);
+
     }
 }

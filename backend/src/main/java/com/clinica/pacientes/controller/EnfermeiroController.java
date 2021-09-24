@@ -9,6 +9,7 @@ import com.clinica.pacientes.repository.EnfermeiroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ public class EnfermeiroController {
     
     @Autowired
     private EnfermeiroRepository enfermeiroRepository;
+    private final PasswordEncoder encoder;
 
     @GetMapping
     public List<Enfermeiro> listar() {
@@ -60,6 +62,8 @@ public class EnfermeiroController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Enfermeiro adicionar(@RequestBody Enfermeiro enfermeiro) {
+        enfermeiro.setCPF(encoder.encode(enfermeiro.getCPF()));
+        enfermeiro.setSenha(encoder.encode(enfermeiro.getSenha()));
         return enfermeiroRepository.save(enfermeiro);
     }
 
