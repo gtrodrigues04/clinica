@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 
 const Home = () => {
+
+
     return (
         <div className="jumbotron">
             <h1 className="display-4">Clínica Médica</h1>

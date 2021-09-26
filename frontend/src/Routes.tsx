@@ -5,6 +5,8 @@ import Header from './components/Header';
 import { Cadastro } from './pages/Cadastro';
 import Login from './pages/Login';
 import { NotFound } from './components/NotFound';
+import { PrivateRoute } from './components/PrivateRoute';
+
 
 const Routes = () => {
     return (
@@ -12,8 +14,8 @@ const Routes = () => {
             <BrowserRouter>
                 <Header />
                 <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/cadastro" exact component={Cadastro} />
+                    <PrivateRoute path="/" exact component={Home} />
+                    <PrivateRoute path="/cadastro" exact component={Cadastro} />
                     <Route path="/login" exact component={Login}/>
                     <Route component={NotFound}/>
                 </Switch>

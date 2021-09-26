@@ -33,21 +33,21 @@ public class Paciente {
 
     @Column
     @NonNull
-    LocalDate date_nasc;
+    private LocalDate date_nasc;
 
     @Column 
     @NonNull
-    String Nome;
+    private String Nome;
 
     @Column
     @NonNull
-    Double Peso;
+    private Double Peso;
 
     @Column 
     @NonNull
-    Double Altura;
+    private Double Altura;
 
     @Column 
     @NonNull
-    String UF;
+    private String UF;
 }

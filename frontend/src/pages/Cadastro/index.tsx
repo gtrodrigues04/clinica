@@ -34,17 +34,9 @@ export const Cadastro = () => {
     resolver: yupResolver(validationPost)
   });
 
-  const addPost = (values: any) => axios.post(`${BASE_URL}/pacientes`, values).then(() => {
-    console.log(values)
-    console.log("Deu certo")
-  }).catch(() => {
-    console.log(values)
-    console.log("Deu erro")
-  })
+  const addPost = (values: any) => axios.post(`${BASE_URL}/pacientes`, values)
 
-  console.log(Estado)
-
-  return (
+   return (
     <>
     <div className="jumbotron">
           <p className="lead">Sistema para cadastro de Pacientes</p>

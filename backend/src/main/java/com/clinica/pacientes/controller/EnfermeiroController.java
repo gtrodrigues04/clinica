@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,7 +54,7 @@ public class EnfermeiroController {
             return ResponseEntity.notFound().build();
         }
 
-        enfermeiro.setCPF(enfermeiroId);
+        enfermeiro.setLogin(enfermeiroId);
         enfermeiro = enfermeiroRepository.save(enfermeiro);
         
         return ResponseEntity.ok(enfermeiro);
@@ -76,5 +77,20 @@ public class EnfermeiroController {
         enfermeiroRepository.deleteById(enfermeiroId);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/validarSenha") 
+    public ResponseEntity<Boolean> validarSenha(@RequestParam String login,
+                                                @RequestParam String senha) {
+        Optional<Enfermeiro> optLogin = enfermeiroRepository.findByLogin(login);
+        if (optLogin.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+        }
+
+        Enfermeiro enfermeiro= optLogin.get();
+        boolean valid = encoder.matches(senha, enfermeiro.getSenha());
+ 
+        HttpStatus status = (valid) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
+        return ResponseEntity.status(status).body(valid);
     }
 }

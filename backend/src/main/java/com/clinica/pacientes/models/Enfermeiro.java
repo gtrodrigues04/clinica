@@ -16,17 +16,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_enfermeiro")
+@Table(name = "tb_enfermeiros")
 public class Enfermeiro {
    
+    @Id
+    @PrimaryKeyJoinColumn
+    private String login;
 
     @Column
     @NonNull
     private String nome;
-    
-    @Id
-    @PrimaryKeyJoinColumn
-    @Column(unique = true)
+
+    @Column
+    @NonNull
     private String CPF;
     
     @Column

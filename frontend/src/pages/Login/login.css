@@ -5,8 +5,8 @@
 }
 .container-login {
     margin-top: 5%;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     background-color: rgb(219, 219, 219);
     color: #0d6efd;
     border-radius: 10px;
@@ -21,6 +21,34 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.header-tab {
+    display: flex;
+    flex-direction: row;
+    margin-top: -40%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header-tab button {
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(219, 219, 219);
+    border-style: none;
+    overflow: hidden
+}
+
+.header-tab button:hover {
+    transition: 0.8s;
+    background-color: #81aef1;
+    color: #fff;
+}
+
+.header-tab button:focus {
+    background-color: #0d6efd;
+    color: #fff;
 }
 
 .Form-Error {
