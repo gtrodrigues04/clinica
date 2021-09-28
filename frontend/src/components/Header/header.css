@@ -1,3 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
 .container a {
     text-decoration: none;
+}
+
+.container button {
+    background-color: #3DECB1;
+    border-style: none;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
 }

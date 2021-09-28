@@ -1,0 +1,26 @@
+.card-paciente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+article {
+    padding: 20px;
+    background-color: #c9d9f8;
+    width: 300px;
+    margin: 20px;
+    border-radius: 10px;
+    border-style: solid;
+
+}    
+
+article ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+article ul li {
+    margin: 10px;
+}

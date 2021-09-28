@@ -6,7 +6,6 @@ import axios from 'axios';
 import { BASE_URL } from '../../utils/request';
 import { useHistory } from 'react-router-dom';
 import {  useState } from 'react';
-import { styled } from '@material-ui/core';
 
 
 
@@ -18,12 +17,13 @@ export const Login = () => {
 
 
     const handleSubmit = (values: any) => axios.get(`${BASE_URL}${profissao}/validarSenha?login=${values.login}&senha=${values.senha}`).then(() => {
+        localStorage.setItem('profissao', JSON.stringify(profissao))
         localStorage.setItem('login', JSON.stringify(values.login));
         localStorage.setItem('senha', JSON.stringify(values.senha));
         hist.push('/')
     }
     ).catch(
-         (values: any) => { hist.push("/login")}
+        () => {alert('usuário ou senha inválidos!')}
     )
 
 
@@ -40,7 +40,7 @@ export const Login = () => {
                <div className='container-login'>
                <div className='header-tab'>
                     <button type='submit' id='btn-med' className='btn-med' autoFocus onClick={() => {setProfissao('/medicos')}}>Médico</button> 
-                    <button type='submit' id='btn-enf' className='btn-enf' onClick={() => {setProfissao('/enfermeiros')}}>Enfermeiro</button>
+                    <button type='submit' id='btn-enf' className='btn-enf' onClick={() => {setProfissao('/enfermeiros') ; }}>Enfermeiro</button>
                 </div>
                         <Formik initialValues={{}} onSubmit={handleSubmit} class='App-form' validationSchema={validations}>
                             <Form>
