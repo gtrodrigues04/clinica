@@ -44,6 +44,7 @@ var request_1 = require("../../utils/request");
 require("./lista.css");
 exports.ListaPacientes = function () {
     var _a = react_1.useState([]), pacientes = _a[0], setPacientes = _a[1];
+    //Busca a lista de pacientes
     react_1.useEffect(function () {
         function loadLista() {
             return __awaiter(this, void 0, void 0, function () {

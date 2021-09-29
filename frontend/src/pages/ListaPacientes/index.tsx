@@ -7,7 +7,7 @@ import './lista.css'
 export const ListaPacientes = () => {
 
     const [pacientes, setPacientes] = useState<any[]>([]);
-
+    //Busca a lista de pacientes
     useEffect(() => {
         async function loadLista() {
             let res: any = await axios.get(`${BASE_URL}/pacientes`);

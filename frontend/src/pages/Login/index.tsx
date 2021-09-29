@@ -15,7 +15,8 @@ export const Login = () => {
     const hist = useHistory();
     let [profissao, setProfissao] = useState('');
 
-
+    //Busca os dados na API e verifica se são válidos
+    //Salva login e senha no localStorage para validar navegação
     const handleSubmit = (values: any) => axios.get(`${BASE_URL}${profissao}/validarSenha?login=${values.login}&senha=${values.senha}`).then(() => {
         localStorage.setItem('profissao', JSON.stringify(profissao))
         localStorage.setItem('login', JSON.stringify(values.login));
@@ -40,7 +41,7 @@ export const Login = () => {
                <div className='container-login'>
                <div className='header-tab'>
                     <button type='submit' id='btn-med' className='btn-med' autoFocus onClick={() => {setProfissao('/medicos')}}>Médico</button> 
-                    <button type='submit' id='btn-enf' className='btn-enf' onClick={() => {setProfissao('/enfermeiros') ; }}>Enfermeiro</button>
+                    <button type='submit' id='btn-enf' className='btn-enf' onClick={() => {setProfissao('/enfermeiros')}}>Enfermeiro</button>
                 </div>
                         <Formik initialValues={{}} onSubmit={handleSubmit} class='App-form' validationSchema={validations}>
                             <Form>

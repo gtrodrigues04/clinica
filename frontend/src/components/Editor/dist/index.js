@@ -61,6 +61,7 @@ exports.Editor = function () {
     var _a, _b, _c;
     var id = react_router_1.useParams().id;
     var _d = react_1.useState([]), Estado = _d[0], setUF = _d[1];
+    //Busca lista de estados no IBGE
     react_1.useEffect(function () {
         function loadUF() {
             return __awaiter(this, void 0, void 0, function () {
@@ -87,6 +88,7 @@ exports.Editor = function () {
     var _e = react_hook_form_1.useForm({
         resolver: yup_1.yupResolver(validationPost)
     }), register = _e.register, handleSubmit = _e.handleSubmit, errors = _e.formState.errors;
+    //Edição de lista de pacientes através do put
     var addPost = function (values) {
         ;
         axios_1["default"].put(request_1.BASE_URL + "/pacientes/" + id, values);

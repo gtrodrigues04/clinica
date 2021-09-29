@@ -14,7 +14,7 @@ export const Editor = () => {
 
     
   const [Estado, setUF] = useState<any[]>([]);
-
+  //Busca lista de estados no IBGE
   useEffect(() => {
     async function loadUF() {
        const response = await api.get('/api/v1/localidades/estados/')
@@ -33,7 +33,7 @@ export const Editor = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validationPost)
     });
-
+    //Edição de lista de pacientes através do put
     const addPost = (values: any) => {
         ;
         axios.put(`${BASE_URL}/pacientes/${id}`, values)

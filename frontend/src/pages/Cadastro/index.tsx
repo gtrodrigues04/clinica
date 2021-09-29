@@ -13,6 +13,7 @@ export const Cadastro = () => {
 
   const [Estado, setUF] = useState<any[]>([]);
 
+  //Busca a lista de Estados no site do IBGE
   useEffect(() => {
     async function loadUF() {
        const response = await api.get('/api/v1/localidades/estados/')
@@ -33,7 +34,7 @@ export const Cadastro = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validationPost)
   });
-
+  //adiciona os valores do formulário na tabela Pacientes
   const addPost = (values: any) => axios.post(`${BASE_URL}/pacientes`, values)
 
    return (

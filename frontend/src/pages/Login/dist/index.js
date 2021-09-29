@@ -12,6 +12,8 @@ var react_1 = require("react");
 exports.Login = function () {
     var hist = react_router_dom_1.useHistory();
     var _a = react_1.useState(''), profissao = _a[0], setProfissao = _a[1];
+    //Busca os dados na API e verifica se são válidos
+    //Salva login e senha no localStorage para validar navegação
     var handleSubmit = function (values) { return axios_1["default"].get("" + request_1.BASE_URL + profissao + "/validarSenha?login=" + values.login + "&senha=" + values.senha).then(function () {
         localStorage.setItem('profissao', JSON.stringify(profissao));
         localStorage.setItem('login', JSON.stringify(values.login));
