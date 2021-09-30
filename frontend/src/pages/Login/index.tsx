@@ -48,7 +48,7 @@ export const Login = () => {
                                 <div className="Form-Group">
                                     <h5>Usuário</h5>
                                     <Field className="Form-Field"
-                                        name="login" />
+                                        type="password" name="login" />
                                     <ErrorMessage
                                         component="span" name="login" className="Form-Error" ></ErrorMessage>
                                 </div>
