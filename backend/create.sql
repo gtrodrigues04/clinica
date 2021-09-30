@@ -1,0 +1,12 @@
+create table tb_enfermeiros (login varchar(255) not null, cpf varchar(255), nome varchar(255), senha varchar(255), primary key (login));
+create table tb_medicos (login varchar(255) not null, cpf varchar(255), nome varchar(255), senha varchar(255), primary key (login));
+create table tb_pacientes (id  bigserial not null, altura float8, cpf varchar(255), nome varchar(255), peso float8, uf varchar(255), date_nasc date, primary key (id));
+alter table tb_pacientes add constraint UK_6004w6orwvywpber8xd3tqgbu unique (cpf);
+create table tb_enfermeiros (login varchar(255) not null, cpf varchar(255), nome varchar(255), senha varchar(255), primary key (login));
+create table tb_medicos (login varchar(255) not null, cpf varchar(255), nome varchar(255), senha varchar(255), primary key (login));
+create table tb_pacientes (id  bigserial not null, altura float8, cpf varchar(255), nome varchar(255), peso float8, uf varchar(255), date_nasc date, primary key (id));
+alter table tb_pacientes add constraint UK_6004w6orwvywpber8xd3tqgbu unique (cpf);
+create table tb_enfermeiros (login varchar(255) not null, cpf varchar(255), nome varchar(255), senha varchar(255), primary key (login));
+create table tb_medicos (login varchar(255) not null, cpf varchar(255), nome varchar(255), senha varchar(255), primary key (login));
+create table tb_pacientes (id  bigserial not null, altura float8, cpf varchar(255), nome varchar(255), peso float8, uf varchar(255), date_nasc date, primary key (id));
+alter table tb_pacientes add constraint UK_6004w6orwvywpber8xd3tqgbu unique (cpf);
