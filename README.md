@@ -1,4 +1,4 @@
-App Web que consiste em sistema de cadastro de Pacientes e Enfermeiros 
+App Web que consiste em um sistema de cadastro de Pacientes e Enfermeiros 
 
 Deploy: https://clinicacad.netlify.app/login
 
