@@ -38,7 +38,7 @@ export const Editor = () => {
         ;
         axios.put(`${BASE_URL}/pacientes/${id}`, values)
             ;
-        window.location.replace('http://localhost:3000/lista-pacientes')
+        window.location.replace('http://clinicacad.netlify.app/lista-pacientes')
     }
 
     return (

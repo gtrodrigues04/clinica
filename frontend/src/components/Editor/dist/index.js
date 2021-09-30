@@ -92,7 +92,7 @@ exports.Editor = function () {
     var addPost = function (values) {
         ;
         axios_1["default"].put(request_1.BASE_URL + "/pacientes/" + id, values);
-        window.location.replace('http://localhost:3000/lista-pacientes');
+        window.location.replace('http://clinicacad.netlify.app/lista-pacientes');
     };
     return (React.createElement("div", { className: "card-post" },
         React.createElement("div", { className: "card-body-post" },
