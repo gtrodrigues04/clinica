@@ -48,14 +48,14 @@ export const Login = () => {
                                 <div className="Form-Group">
                                     <h5>Usuário</h5>
                                     <Field className="Form-Field"
-                                        type="password" name="login" />
+                                         name="login" />
                                     <ErrorMessage
                                         component="span" name="login" className="Form-Error" ></ErrorMessage>
                                 </div>
                                 <div className="Form-Group">
                                     <h5>Senha</h5>
                                     <Field className="Form-Field"
-                                        name="senha" />
+                                        type='password' name="senha" />
                                     <ErrorMessage
                                         component="span" name="senha" className="Form-Error"></ErrorMessage>
                                 </div>
