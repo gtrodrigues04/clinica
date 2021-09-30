@@ -1,6 +1,8 @@
 App Web que consiste em um sistema de cadastro de Pacientes e Enfermeiros 
 
 Deploy: https://clinicacad.netlify.app/login
+Para o Front foi utilizado o Framework ReactJS com linguagem TypeScript
+Para o Back foi utilzado Spring Boot com linguagem Java
 
 Foi utilizada a plataforma do Heroku para acesso ao Backend em nuvem e a plataforma Netlify para build do Front e acesso em nuvem. 
 
