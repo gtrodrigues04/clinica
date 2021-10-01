@@ -90,7 +90,16 @@ exports.Cadastro = function () {
         resolver: yup_1.yupResolver(validationPost)
     }), register = _h.register, handleSubmit = _h.handleSubmit, errors = _h.formState.errors;
     //adiciona os valores do formulário na tabela Pacientes
-    var addPost = function (values) { return axios_1["default"].post(request_1.BASE_URL + "/pacientes", values); };
+    var addPost = function (values) {
+        if (values) {
+            axios_1["default"].post(request_1.BASE_URL + "/pacientes", values);
+            alert('Paciente cadastrado com sucesso!');
+            window.location.reload();
+        }
+        else {
+            alert('Preencha todos os campos!');
+        }
+    };
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "jumbotron" },
             React.createElement("p", { className: "lead" }, "Sistema para cadastro de Pacientes"),
@@ -126,7 +135,7 @@ exports.Cadastro = function () {
                             })),
                             React.createElement("p", { className: "error-message" }, (_f = errors.peso) === null || _f === void 0 ? void 0 : _f.message)),
                         React.createElement("div", { className: "btn-post" },
-                            React.createElement("button", { type: "submit" }, " Enviar ")))))),
+                            React.createElement("button", { type: "submit" }, "Enviar")))))),
         React.createElement("div", { className: "container-foot" },
             React.createElement("p", null,
                 "App desenvolvido por ",

@@ -39,6 +39,7 @@ export const Editor = () => {
         axios.put(`${BASE_URL}/pacientes/${id}`, values)
             ;
         window.location.replace('http://clinicacad.netlify.app/lista-pacientes')
+        alert('Ficha atualizada com sucesso!')
     }
 
     return (

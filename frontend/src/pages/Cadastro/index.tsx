@@ -9,18 +9,19 @@ import api from "../../serivces/api";
 import { useEffect, useState } from "react";
 
 
+
 export const Cadastro = () => {
 
   const [Estado, setUF] = useState<any[]>([]);
-
+  
   //Busca a lista de Estados no site do IBGE
   useEffect(() => {
     async function loadUF() {
-       const response = await api.get('/api/v1/localidades/estados/')
-       setUF(response.data);
-     }
+      const response = await api.get('/api/v1/localidades/estados/')
+      setUF(response.data);
+    }
     loadUF();
-   }, [])
+  }, [])
 
   const validationPost = yup.object({
     nome: yup.string().required("O nome é obrigatório").max(40, "O nome precisa ter menos de 40 caracteres"),
@@ -35,72 +36,84 @@ export const Cadastro = () => {
     resolver: yupResolver(validationPost)
   });
   //adiciona os valores do formulário na tabela Pacientes
-  const addPost = (values: any) => axios.post(`${BASE_URL}/pacientes`, values)
+  const addPost = (values: any) => {
+    if (values) {
+      axios.post(`${BASE_URL}/pacientes`, values)
+      alert('Paciente cadastrado com sucesso!')
+      window.location.reload();
+    }
+    else {
+      alert('Preencha todos os campos!')
+    }
+  }
 
-   return (
+
+
+
+  return (
     <>
-    <div className="jumbotron">
-          <p className="lead">Sistema para cadastro de Pacientes</p>
-          <hr />
-    </div>
-    
+      <div className="jumbotron">
+        <p className="lead">Sistema para cadastro de Pacientes</p>
+        <hr />
+      </div>
+
       <main>
         <div className="card-post">
           <div className="card-body-post">
-          <form onSubmit={handleSubmit(addPost)}>
-            <div className="fields">
-              <label>Nome</label>
-              <input type='text'  {...register("nome")}></input>
-              <p className="error-message">{errors.nome?.message}</p>
-            </div>
+            <form onSubmit={handleSubmit(addPost)}>
+              <div className="fields">
+                <label>Nome</label>
+                <input type='text'  {...register("nome")}></input>
+                <p className="error-message">{errors.nome?.message}</p>
+              </div>
 
-            <div className="fields">
-              <label>CPF</label>
-              <input type='text'  {...register("cpf")}></input>
-              <p className="error-message">{errors.cpf?.message}</p>
-            </div>
+              <div className="fields">
+                <label>CPF</label>
+                <input type='text'  {...register("cpf")}></input>
+                <p className="error-message">{errors.cpf?.message}</p>
+              </div>
 
-            <div className="fields">
-              <label>Data Nascimento</label>
-              <input type='date' {...register('date_nasc')}></input>
-              <p className="error-message">{errors.date_nasc?.message}</p>
-            </div>
+              <div className="fields">
+                <label>Data Nascimento</label>
+                <input type='date' {...register('date_nasc')}></input>
+                <p className="error-message">{errors.date_nasc?.message}</p>
+              </div>
 
-            <div className="fields">
-              <label>Altura</label>
-              <input type='text' {...register("altura")}></input>
-              <p className="error-message">{errors.altura?.message}</p>
-            </div>
+              <div className="fields">
+                <label>Altura</label>
+                <input type='text' {...register("altura")}></input>
+                <p className="error-message">{errors.altura?.message}</p>
+              </div>
 
-            <div className="fields">
-              <label>Peso</label>
-              <input type='text' {...register("peso")}></input>
-              <p className="error-message">{errors.peso?.message}</p>
-            </div>
+              <div className="fields">
+                <label>Peso</label>
+                <input type='text' {...register("peso")}></input>
+                <p className="error-message">{errors.peso?.message}</p>
+              </div>
 
-            <div className="fields">
-              <label>UF</label>
-              <select {...register("uf")}>
-              {Estado.map((item) => {
-              return (
-                <option>{item.sigla}</option>
-              );
-              })}
-              </select>
-            <p className="error-message">{errors.peso?.message}</p>
-            </div>
+              <div className="fields">
+                <label>UF</label>
+                <select {...register("uf")}>
+                  {Estado.map((item) => {
+                    return (
+                      <option>{item.sigla}</option>
+                    );
+                  })}
+                </select>
+                <p className="error-message">{errors.peso?.message}</p>
+              </div>
 
-            <div className="btn-post">
-              <button type="submit" > Enviar </button>
-            </div>
+              <div className="btn-post">
+                <button type="submit">Enviar</button>
+              </div>
 
-          </form>
+            </form>
           </div>
-          </div>
+        </div>
       </main>
       <div className="container-foot">
-                <p>App desenvolvido por <a href="https://github.com/gtrodrigues04" target="_blank" rel="noreferrer">Guilherme Teixeira</a></p>
-        </div>
+        <p>App desenvolvido por <a href="https://github.com/gtrodrigues04" target="_blank" rel="noreferrer">Guilherme Teixeira</a></p>
+      </div>
     </>
   )
 }

@@ -93,6 +93,7 @@ exports.Editor = function () {
         ;
         axios_1["default"].put(request_1.BASE_URL + "/pacientes/" + id, values);
         window.location.replace('http://clinicacad.netlify.app/lista-pacientes');
+        alert('Ficha atualizada com sucesso!');
     };
     return (React.createElement("div", { className: "card-post" },
         React.createElement("div", { className: "card-body-post" },

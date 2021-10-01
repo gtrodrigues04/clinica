@@ -6,6 +6,7 @@ import * as yup from "yup";
 import './post.css'
 import { useState } from "react";
 
+
 export const Cadastro_Enf = () => {
 
     const validationPost = yup.object({
@@ -26,8 +27,16 @@ export const Cadastro_Enf = () => {
 
     const addPost = 
 
-        (values: any) => senha === senha_repeat ? 
-            axios.post(`${BASE_URL}/enfermeiros`, values) : alert('As senhas não conferem!')  
+        (values: any) => { if (senha === senha_repeat)  {
+                axios.post(`${BASE_URL}/enfermeiros`, values)
+                alert('Cadastro realizado com sucesso!')
+                window.location.reload()
+        }
+        else 
+        {
+                alert('As senhas não conferem!')
+        }
+        }
     
         return (
         <>
@@ -67,7 +76,7 @@ export const Cadastro_Enf = () => {
                                     onChange={e => setSenhaRepeat(e.target.value)} />
                             </div>
                             <div className="btn-post">
-                                <button type="submit" > Enviar </button>
+                                <button type="submit">Enviar</button>
                             </div>
                         </form>
                     </div>
